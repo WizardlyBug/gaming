@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CYBERPUNK 2077 · GAMING HUB</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Arial', system-ui, sans-serif;
+    }
+
+    body {
+      background: #0b0b0f;
+      background-image: radial-gradient(circle at 10% 20%, #1a1a2e 0%, #0a0a0f 90%);
+      color: #e0e0e0;
+      min-height: 100vh;
+      padding: 1.5rem;
+    }
+
+    /* CYBERPUNK 2077 THEME — NEON YELLOW + PINK / BLUE ACCENTS */
+    :root {
+      --neon-yellow: #f0e800;
+      --neon-pink: #ff2a7a;
+      --neon-blue: #00d4ff;
+      --dark-bg: #0d0d14;
+      --card-bg: rgba(18, 18, 30, 0.85);
+      --border-glow: 0 0 12px rgba(240, 232, 0, 0.3);
+    }
+
+    /* scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #14141e; }
+    ::-webkit-scrollbar-thumb { background: var(--neon-yellow); border-radius: 8px; }
+
+    /* container */
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      background: rgba(8, 8, 16, 0.6);
+      backdrop-filter: blur(2px);
+      border: 1px solid rgba(240, 232, 0, 0.15);
+      border-radius: 2rem;
+      padding: 1.8rem 2rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(240, 232, 0, 0.05);
+    }
+
+    /* HEADER ========================================== */
+    .header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid rgba(240, 232, 0, 0.4);
+      padding-bottom: 1.2rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .logo h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, var(--neon-yellow), #ffb300, var(--neon-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 20px rgba(240, 232, 0, 0.3);
+    }
+
+    .logo span {
+      font-size: 0.9rem;
+      display: block;
+      color: #b0b0c0;
+      letter-spacing: 6px;
+      margin-top: -6px;
+      -webkit-text-fill-color: #b0b0c0;
+      background: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      color: #d0d0e0;
+      text-decoration: none;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      transition: 0.2s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a:hover {
+      color: var(--neon-yellow);
+      border-bottom-color: var(--neon-yellow);
+      text-shadow: 0 0 12px rgba(240, 232, 0, 0.4);
+    }
+
+    .header .cyber-icon {
+      color: var(--neon-pink);
+      font-size: 1.7rem;
+      filter: drop-shadow(0 0 8px #ff2a7a);
+    }
+
+    /* MAIN GRID ======================================= */
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* card style */
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(240, 232, 0, 0.15);
+      border-radius: 1.8rem;
+      padding: 1.5rem 1.8rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      border-color: var(--neon-yellow);
+      box-shadow: var(--border-glow), 0 8px 28px rgba(0, 0, 0, 0.8);
+    }
+
+    .card-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--neon-yellow);
+      text-shadow: 0 0 10px rgba(240, 232, 0, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px dashed rgba(240, 232, 0, 0.25);
+      padding-bottom: 0.7rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .card-title i {
+      color: var(--neon-pink);
+      font-size: 1.6rem;
+      filter: drop-shadow(0 0 6px #ff2a7a);
+    }
+
+    /* NEWS ITEMS */
+    .news-item {
+      display: flex;
+      gap: 1.2rem;
+      margin-bottom: 1.7rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .news-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .news-img {
+      width: 80px;
+      height: 80px;
+      background: #1a1a2e;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      color: var(--neon-blue);
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      flex-shrink: 0;
+    }
+
+    .news-content h4 {
+      font-size: 1.1rem;
+      color: #f0f0ff;
+      margin-bottom: 4px;
+    }
+
+    .news-content p {
+      color: #a8a8bb;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .news-tag {
+      display: inline-block;
+      background: rgba(255, 42, 122, 0.2);
+      color: var(--neon-pink);
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 30px;
+      letter-spacing: 0.5px;
+      border: 1px solid rgba(255, 42, 122, 0.3);
+      margin-top: 6px;
+    }
+
+    /* PODCAST SECTION (right col) */
+    .podcast-item {
+      background: rgba(0, 212, 255, 0.03);
+      border-left: 4px solid var(--neon-blue);
+      padding: 0.8rem 1rem;
+      margin-bottom: 1.2rem;
+      border-radius: 0 12px 12px 0;
+      transition: 0.15s;
+    }
+
+    .podcast-item:hover {
+      background: rgba(0, 212, 255, 0.08);
+      border-left-width: 6px;
+    }
+
+    .podcast-item .pod-title {
+      font-weight: 600;
+      color: #d0d0f0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .podcast-item .pod-title i {
+      color: var(--neon-yellow);
+      width: 24px;
+    }
+
+    .podcast-item .pod-desc {
+      font-size: 0.85rem;
+      color: #a0a0b8;
+      padding-left: 34px;
+    }
+
+    .podcast-item .pod-meta {
+      font-size: 0.7rem;
+      color: #5a5a7a;
+      padding-left: 34px;
+      letter-spacing: 0.5px;
+    }
+
+    /* INTRO NEW GAMES ================================ */
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 0.8rem;
+    }
+
+    .game-card {
+      background: #11111f;
+      border-radius: 1.5rem;
+      padding: 1.2rem 0.8rem 1rem;
+      text-align: center;
+      border: 1px solid rgba(240, 232, 0, 0.08);
+      transition: 0.2s;
+    }
+
+    .game-card:hover {
+      border-color: var(--neon-pink);
+      box-shadow: 0 0 20px rgba(255, 42, 122, 0.15);
+      transform: translateY(-4px);
+    }
+
+    .game-card .game-icon {
+      font-size: 2.8rem;
+      color: var(--neon-yellow);
+      filter: drop-shadow(0 0 6px #f0e800);
+      margin-bottom: 8px;
+    }
+
+    .game-card h5 {
+      color: #f0f0ff;
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .game-card p {
+      font-size: 0.75rem;
+      color: #8a8aaa;
+      line-height: 1.3;
+    }
+
+    .game-card .badge {
+      display: inline-block;
+      margin-top: 8px;
+      background: var(--neon-pink);
+      color: #0b0b0f;
+      font-weight: 700;
+      font-size: 0.6rem;
+      padding: 3px 12px;
+      border-radius: 30px;
+      letter-spacing: 0.5px;
+    }
+
+    /* footer */
+    .footer {
+      margin-top: 2.8rem;
+      border-top: 1px solid rgba(240, 232, 0, 0.15);
+      padding-top: 1.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: #6a6a82;
+    }
+
+    .footer .social i {
+      font-size: 1.3rem;
+      margin-left: 1rem;
+      color: #7a7a9a;
+      transition: 0.2s;
+    }
+
+    .footer .social i:hover {
+      color: var(--neon-yellow);
+      text-shadow: 0 0 12px #f0e800;
+    }
+
+    .footer .cyber-tag {
+      color: var(--neon-pink);
+      letter-spacing: 2px;
+    }
+
+    /* responsive */
+    @media (max-width: 900px) {
+      .grid-2col { grid-template-columns: 1fr; }
+      .games-grid { grid-template-columns: repeat(2, 1fr); }
+      .header { flex-direction: column; align-items: start; gap: 1rem; }
+      .nav-links { flex-wrap: wrap; gap: 1rem; }
+    }
+
+    @media (max-width: 500px) {
+      .container { padding: 1rem; }
+      .games-grid { grid-template-columns: 1fr; }
+    }
+
+    /* extra cyberpunk glow */
+    .glow-text {
+      color: var(--neon-blue);
+      text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    }
+
+    .highlight-yellow {
+      color: var(--neon-yellow);
+    }
+
+    .btn-cyber {
+      display: inline-block;
+      background: transparent;
+      border: 1px solid var(--neon-yellow);
+      color: var(--neon-yellow);
+      padding: 4px 14px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      transition: 0.2s;
+      cursor: default;
+    }
+
+    .btn-cyber:hover {
+      background: var(--neon-yellow);
+      color: #0b0b0f;
+    }
+
+    /* separator */
+    .section-sep {
+      margin: 2rem 0 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .section-sep hr {
+      flex: 1;
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--neon-pink), transparent);
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">
+      <h1>⍟ NEON 2077</h1>
+      <span>// GAMING HUB · CYBERPUNK EDITION</span>
+    </div>
+    <div class="nav-links">
+      <a href="#"><i class="fas fa-newspaper"></i> News</a>
+      <a href="#"><i class="fas fa-microphone"></i> Podcasts</a>
+      <a href="#"><i class="fas fa-gamepad"></i> Games</a>
+      <a href="#"><i class="fas fa-user-astronaut"></i> Community</a>
+    </div>
+    <div class="cyber-icon">
+      <i class="fas fa-microchip"></i>
+    </div>
+  </header>
+
+  <!-- MAIN GRID: NEWS + PODCASTS -->
+  <div class="grid-2col">
+    <!-- left: news -->
+    <div class="card">
+      <div class="card-title">
+        <i class="fas fa-bolt"></i> LATEST NEWS · NIGHT CITY
+      </div>
+
+      <div class="news-item">
+        <div class="news-img"><i class="fas fa-skull"></i></div>
+        <div class="news-content">
+          <h4>Phantom Liberty 2.0 — new endings</h4>
+          <p>CD Projekt Red unveils secret ending with Songbird & Reed. New weapons, cyberware, and a revamped perk system.</p>
+          <span class="news-tag"><i class="far fa-clock"></i> 2h ago</span>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-img"><i class="fas fa-car"></i></div>
+        <div class="news-content">
+          <h4>Quadra Turbo-R V-Tech irl?</h4>
+          <p>Real-life Quadra replica built by Japanese garage. 0-100 in 2.9s, full carbon fiber body.</p>
+          <span class="news-tag"><i class="far fa-calendar-alt"></i> yesterday</span>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-img"><i class="fas fa-robot"></i></div>
+        <div class="news-content">
+          <h4>Cyberpunk 2077: Orion update</h4>
+          <p>Sequel (Project Orion) enters pre-production. CDPR confirms Unreal Engine 5 and more immersive cyberware.</p>
+          <span class="news-tag"><i class="fas fa-code"></i> 3 days ago</span>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-img"><i class="fas fa-dice-d6"></i></div>
+        <div class="news-content">
+          <h4>Cyberpunk 2077 tabletop RPG</h4>
+          <p>New sourcebook "Street Kings" adds 20+ gangs, new lifepaths, and edgerunner missions.</p>
+          <span class="news-tag"><i class="fas fa-dragon"></i> 5 days ago</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- right: PODCASTS -->
+    <div class="card">
+      <div class="card-title">
+        <i class="fas fa-podcast"></i> PODCASTS · EDGERUNNERS
+      </div>
+
+      <div class="podcast-item">
+        <div class="pod-title"><i class="fas fa-headphones"></i> Cyberpunk 2077: Afterlife</div>
+        <div class="pod-desc">Deep dive into Phantom Liberty lore &amp; secret agents.</div>
+        <div class="pod-meta"><i class="far fa-clock"></i> 54 min · new episode</div>
+      </div>
+
+      <div class="podcast-item">
+        <div class="pod-title"><i class="fas fa-microphone-alt"></i> Night City Wire</div>
+        <div class="pod-desc">Interview with Pawel Sasko about cyberpsychosis &amp; game design.</div>
+        <div class="pod-meta"><i class="fas fa-calendar"></i> 12.07.2026</div>
+      </div>
+
+      <div class="podcast-item">
+        <div class="pod-title"><i class="fas fa-radio"></i> Samurai Radio</div>
+        <div class="pod-desc">Soundtrack special: Refused, Johnny Silverhand, and more.</div>
+        <div class="pod-meta"><i class="fas fa-music"></i> 38 min</div>
+      </div>
+
+      <div class="podcast-item">
+        <div class="pod-title"><i class="fas fa-robot"></i> Cyberware & Chrome</div>
+        <div class="pod-desc">Best cyberware for netrunners and sandy builds.</div>
+        <div class="pod-meta"><i class="fas fa-microchip"></i> 47 min</div>
+      </div>
+
+      <div style="margin-top: 1rem; text-align: right;">
+        <span class="btn-cyber"><i class="fas fa-headphones"></i> ALL EPISODES</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTRODUCING NEW GAMES (cyberpunk related) -->
+  <div class="section-sep">
+    <i class="fas fa-gamepad" style="color: var(--neon-pink); font-size: 1.4rem;"></i>
+    <hr>
+    <span style="color: #b0b0cc; letter-spacing: 2px; font-weight: 300;">NEW GAMES · 2077 + BEYOND</span>
+    <hr>
+    <i class="fas fa-rocket" style="color: var(--neon-blue);"></i>
+  </div>
+
+  <div class="games-grid">
+    <div class="game-card">
+      <div class="game-icon"><i class="fas fa-robot"></i></div>
+      <h5>Project Orion</h5>
+      <p>Next-gen Cyberpunk sequel, Unreal 5, deeper RPG mechanics. 2028?</p>
+      <span class="badge"><i class="fas fa-star"></i> anticipated</span>
+    </div>
+    <div class="game-card">
+      <div class="game-icon"><i class="fas fa-skull-crossbones"></i></div>
+      <h5>Cyberpunk: 2077 - Ultimate</h5>
+      <p>Complete edition with all DLCs, new game+ & extra cyberpsycho encounters.</p>
+      <span class="badge" style="background: var(--neon-blue); color: #0b0b0f;">out now</span>
+    </div>
+    <div class="game-card">
+      <div class="game-icon"><i class="fas fa-dice"></i></div>
+      <h5>Cyberpunk RED: Street Kings</h5>
+      <p>Tabletop RPG expansion. New gangs, cyberware, and edgerunner campaigns.</p>
+      <span class="badge" style="background: #7a4aff;">pre-order</span>
+    </div>
+  </div>
+
+  <!-- small extra: upcoming game highlight -->
+  <div style="margin-top: 1.8rem; background: rgba(255, 42, 122, 0.03); border-radius: 3rem; padding: 0.6rem 1.8rem; border: 1px solid rgba(255, 42, 122, 0.2); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+    <span style="font-weight: 300; letter-spacing: 1px;"><i class="fas fa-circle" style="color: var(--neon-pink); font-size: 0.6rem;"></i> <span class="glow-text">COMING SOON:</span> <strong>Cyberpunk 2077: Dark Future</strong> — new standalone expansion </span>
+    <span class="btn-cyber" style="border-color: var(--neon-pink); color: var(--neon-pink);"><i class="fas fa-bolt"></i> WISHLIST</span>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div>
+      <span style="font-weight: 600; color: #b0b0cc;">CYBERPUNK 2077 · GAMING HUB</span><br>
+      <span style="font-size: 0.7rem;">© 2026 NEON · all rights reserved · data from Night City</span>
+    </div>
+    <div class="social">
+      <i class="fab fa-twitter"></i>
+      <i class="fab fa-youtube"></i>
+      <i class="fab fa-spotify"></i>
+      <i class="fab fa-discord"></i>
+      <span class="cyber-tag"><i class="fas fa-shield-alt"></i> #SAMURAI</span>
+    </div>
+  </footer>
+
+</div> <!-- end container -->
+</body>
+</html>
